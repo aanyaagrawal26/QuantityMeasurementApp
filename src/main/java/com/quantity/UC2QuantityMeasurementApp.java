@@ -1,0 +1,53 @@
+package com.quantity;
+
+public class UC2QuantityMeasurementApp {
+
+    static class Feet {
+        private final double value;
+
+        public Feet(double value) {
+            this.value = value;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+            Feet feet = (Feet) obj;
+            return Double.compare(feet.value, value) == 0;
+        }
+    }
+
+    static class Inches {
+        private final double value;
+
+        public Inches(double value) {
+            this.value = value;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+            Inches inches = (Inches) obj;
+            return Double.compare(inches.value, value) == 0;
+        }
+    }
+
+    public static boolean areFeetEqual(double value1, double value2) {
+        Feet feet1 = new Feet(value1);
+        Feet feet2 = new Feet(value2);
+        return feet1.equals(feet2);
+    }
+
+    public static boolean areInchesEqual(double value1, double value2) {
+        Inches inches1 = new Inches(value1);
+        Inches inches2 = new Inches(value2);
+        return inches1.equals(inches2);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Feet equality (1.0 ft, 1.0 ft): " + areFeetEqual(1.0, 1.0));
+        System.out.println("Inches equality (1.0 in, 1.0 in): " + areInchesEqual(1.0, 1.0));
+    }
+}
